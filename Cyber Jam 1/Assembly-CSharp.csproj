@@ -55,8 +55,10 @@
      <Compile Include="Assets\CodeMonkey\Utils\World_Bar.cs" />
      <Compile Include="Assets\CodeMonkey\Utils\World_Mesh.cs" />
      <Compile Include="Assets\CodeMonkey\Utils\World_Sprite.cs" />
+     <Compile Include="Assets\Script\Floor.cs" />
      <Compile Include="Assets\Script\Grid.cs" />
      <Compile Include="Assets\Script\GridManager.cs" />
+     <Compile Include="Assets\Script\PixelBehaviour.cs" />
      <Compile Include="Assets\Script\Testing.cs" />
      <None Include="Assets\CodeMonkey\README.txt" />
     <Reference Include="UnityEngine">

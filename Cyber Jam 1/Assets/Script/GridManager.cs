@@ -5,10 +5,12 @@ using UnityEngine;
 public class GridManager : MonoBehaviour
 {
     public Sprite sprite;
+    public GameObject pixelObj;
+
     public float[,] grid;
     int vertical, horizontal, columns, rows;
 
-    public bool deadPixel = true;
+    public bool isGameRunning = true;
 
     private void Awake()
     {
@@ -43,6 +45,13 @@ public class GridManager : MonoBehaviour
         pixelSprite.color = new Color(1, 1, 1, 1);
     }
 
+    private void SpawnPixel(GameObject pixelInGrid)
+    {
+        Vector2 spawnPosition = pixelInGrid.gameObject.transform.position;
+        Instantiate(pixelObj);
+        pixelObj.transform.position = spawnPosition;
+    }
+
     IEnumerator RandomPixelDrop()
     {
         int time = Random.Range(3, 16);
@@ -57,12 +66,10 @@ public class GridManager : MonoBehaviour
 
         GameObject pixel = GameObject.Find($"X: {x}  -  Y: {y}");
         
-        if (pixel.GetComponent<SpriteRenderer>().color == Color.white)
-        {
-            pixel.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 1);
-        }
+        SpawnPixel(pixel);
+        pixel.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 1);
 
-        if (deadPixel)
+        if (isGameRunning)
         {
             StartCoroutine(RandomPixelDrop());
         }
