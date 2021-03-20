@@ -40,7 +40,7 @@ public class GridManager : MonoBehaviour
         gameObject.transform.position = new Vector3(x - (horizontal + 2.5f), y - (vertical - 0.5f));
         var pixelSprite = gameObject.AddComponent<SpriteRenderer>();
         pixelSprite.sprite = sprite;
-        pixelSprite.color = new Color(1, 1, 1);
+        pixelSprite.color = new Color(1, 1, 1, 1);
     }
 
     IEnumerator RandomPixelDrop()
@@ -54,6 +54,15 @@ public class GridManager : MonoBehaviour
         yield return new WaitForSeconds(time);
 
         GameObject pixel = GameObject.Find($"X: {x}  -  Y: {y}");
-        pixel.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0);
+        
+        if (pixel.GetComponent<SpriteRenderer>().color == Color.white)
+        {
+            pixel.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 1);
+        }
+
+        if (deadPixel)
+        {
+            StartCoroutine(RandomPixelDrop());
+        }
     }
 }
