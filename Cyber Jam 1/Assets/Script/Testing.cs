@@ -9,7 +9,7 @@ public class Testing : MonoBehaviour
 
     void Start()
     {
-        grid = new Grid(10, 10, 5f, new Vector3(0, 0));
+        grid = new Grid(25, 14, 5f, new Vector3(-61.4f, -35));
     }
 
     private void Update()
@@ -24,4 +24,12 @@ public class Testing : MonoBehaviour
             Debug.Log(grid.GetValue(Camera.main.ScreenToWorldPoint(Input.mousePosition)));
         }
     }
+
+    //IEnumerable RandomPixelDrop()
+    //{
+    //    int x = Random.Range(0, 25);
+    //    int y = Random.Range(0, 14);
+    //
+    //    yield return WaitForSeconds;
+    //}
 }

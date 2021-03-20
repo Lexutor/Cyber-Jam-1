@@ -7,6 +7,7 @@ using UnityEngine;
 public class Grid
 {
     public event EventHandler<OnGridValueChangedEventArgs> OnGridValueChanged;
+    
     public class OnGridValueChangedEventArgs : EventArgs
     {
         public int x;
