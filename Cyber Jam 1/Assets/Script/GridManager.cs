@@ -13,8 +13,8 @@ public class GridManager : MonoBehaviour
     private void Awake()
     {
         vertical = (int)Camera.main.orthographicSize;
-        horizontal = vertical * (Screen.width / Screen.height);
-        columns = horizontal * 3 + 1;
+        horizontal = (int)(vertical * Camera.main.aspect);
+        columns = horizontal * 2;
         rows = vertical * 2;
         grid = new float[columns, rows];
 
@@ -37,7 +37,7 @@ public class GridManager : MonoBehaviour
     {
         GameObject gameObject = new GameObject($"X: {x}  -  Y: {y}");
 
-        gameObject.transform.position = new Vector3(x - (horizontal + 2.5f), y - (vertical - 0.5f));
+        gameObject.transform.position = new Vector3(x - (horizontal - 0.5f), y - (vertical - 0.5f));
         var pixelSprite = gameObject.AddComponent<SpriteRenderer>();
         pixelSprite.sprite = sprite;
         pixelSprite.color = new Color(1, 1, 1, 1);
@@ -45,10 +45,12 @@ public class GridManager : MonoBehaviour
 
     IEnumerator RandomPixelDrop()
     {
-        int time = Random.Range(4, 15);
-        int x = Random.Range(0, 15);
-        int y = Random.Range(0, 9);
+        int time = Random.Range(3, 16);
+        int x = Random.Range(0, columns);
+        int y = Random.Range(0, rows);
 
+        //Debug.Log($"Random max range for X: {columns}");
+        //Debug.Log($"Random max range for Y: {rows}");
         Debug.Log($"Time: {time}  -  X: {x}  -  Y: {y}");
         
         yield return new WaitForSeconds(time);
