@@ -42,14 +42,7 @@ public class GridManager : MonoBehaviour
         gameObject.transform.position = new Vector3(x - (horizontal - 0.5f), y - (vertical - 0.5f));
         var pixelSprite = gameObject.AddComponent<SpriteRenderer>();
         pixelSprite.sprite = sprite;
-        pixelSprite.color = new Color(1, 1, 1, 1);
-    }
-
-    private void SpawnPixel(GameObject pixelInGrid)
-    {
-        Vector2 spawnPosition = pixelInGrid.gameObject.transform.position;
-        Instantiate(pixelObj);
-        pixelObj.transform.position = spawnPosition;
+        pixelSprite.color = new Color(1, 1, 1, 0);
     }
 
     IEnumerator RandomPixelDrop()
@@ -66,8 +59,11 @@ public class GridManager : MonoBehaviour
 
         GameObject pixel = GameObject.Find($"X: {x}  -  Y: {y}");
         
-        SpawnPixel(pixel);
-        pixel.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 1);
+        if (pixel.GetComponent<SpriteRenderer>().color != Color.black)
+        {
+            pixel.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 1);
+            Instantiate(pixelObj, new Vector3(pixel.transform.position.x, pixel.transform.position.y, -2), Quaternion.identity);
+        }
 
         if (isGameRunning)
         {

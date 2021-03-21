@@ -13,7 +13,7 @@ public class Floor : MonoBehaviour
 
         horizontal *= 2;
 
-        gameObject.transform.localPosition = new Vector3(0, -vertical - 0.5f, 0);
+        gameObject.transform.localPosition = new Vector3(0, -vertical - 0.6f, 0);
         gameObject.transform.localScale = new Vector3(horizontal + 2, 1, 1);
     }
 }
