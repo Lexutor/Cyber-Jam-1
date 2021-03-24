@@ -6,6 +6,7 @@ public class GridManager : MonoBehaviour
 {
     public Sprite sprite;
     public GameObject pixelObj;
+    public GameObject squareTrigger;
 
     public float[,] grid;
     int vertical, horizontal, columns, rows;
@@ -62,7 +63,8 @@ public class GridManager : MonoBehaviour
         if (pixel.GetComponent<SpriteRenderer>().color != Color.black)
         {
             pixel.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 1);
-            Instantiate(pixelObj, new Vector3(pixel.transform.position.x, pixel.transform.position.y, -2), Quaternion.identity);
+            Instantiate(pixelObj, new Vector3(pixel.transform.position.x, pixel.transform.position.y, -5), Quaternion.identity);
+            Instantiate(squareTrigger, pixel.transform.position, Quaternion.identity);
         }
 
         if (isGameRunning)

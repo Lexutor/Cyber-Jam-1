@@ -236,6 +236,8 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 6f4c92cf9fa791f4c82153cf33f8b41f, type: 3}
   pixelObj: {fileID: 4809750045788701078, guid: 9e0d79144f6fe6b42b97de7610e0055d,
     type: 3}
+  squareTrigger: {fileID: 4197216130271117513, guid: 74c71770cb4558d4d94e8c2fe3479750,
+    type: 3}
   isGameRunning: 1
 --- !u!4 &1531726208
 Transform:
